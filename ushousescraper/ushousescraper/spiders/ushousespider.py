@@ -7,4 +7,8 @@ class UshousespiderSpider(scrapy.Spider):
     start_urls = ["https://liveproxy-azapp-prod-eastus2-003.azurewebsites.net/latest/floor"]
 
     def parse(self, response):
-        pass
+        jsonresponse = response.json()
+
+        yield {
+            '_id' : jsonresponse.get('_id')
+        }
